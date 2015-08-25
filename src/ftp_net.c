@@ -16,7 +16,10 @@
  * =====================================================================================
  */
 
-#include "ftp_net.h"
+#include "my_ftp.h"
+
+/* 全局变量定义 */
+int g_listenfd;
 
 /* 创建socket并绑定到指定地址，返回绑定以后的socket描述符 */
 int bind_socket(const char *ip, int port)
@@ -61,7 +64,10 @@ void handle_accept(int listenfd)
                 exit(1);
         }
 
-        users[user_count].ctl_addr = cli_addr;
-        users[user_count].ctl_fd = connfd;
-        ++user_count;
+        pthread_mutex_lock(&g_user_mutex);
+        g_users[g_user_count].ctl_addr = cli_addr;
+        g_users[g_user_count].ctl_fd = connfd;
+
+        //++user_count;
+        pthread_mutex_unlock(&g_user_mutex);
 }

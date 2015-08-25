@@ -24,12 +24,14 @@
   #include <pthread.h>
   #include <stdbool.h>
   #include <stdlib.h>
+  #include <stdio.h>
+  #include <unistd.h>
 
 /* data structure */
 
 typedef struct task
 {
-        void *(*callback)(void *);      /* 任务回调函数 */
+        void *(*task_callback)(void *);      /* 任务回调函数 */
         void *arg;                      /* 回调函数的参数 */
         struct task *next;              /* 指向下一个任务 */
 }task_t;        /* 任务数据结构 */
@@ -56,7 +58,7 @@ typedef struct thread_pool
 
 /* global var */
 
-  thread_pool_t *thread_pool = NULL;    /* 全局线程池指针 */
+  extern thread_pool_t *g_thread_pool;    /* 全局线程池指针 */
 
 /* function */
 

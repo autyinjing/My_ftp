@@ -16,21 +16,32 @@
  * =====================================================================================
  */
 
-#include "ftp_log.h"
+#include "my_ftp.h"
+
+/* 宏定义 */
+#define RUNLOG 0
+#define ERRLOG 1
+#define RUN_LOG_PATH "/home/honey/.my_ftp.log/ftp_run.log"
+#define ERR_LOG_PATH "/home/honey/.my_ftp.log/ftp_err.log"
+
+/* 全局变量定义 */
+int run_log_fd;
+int err_log_fd;
 
 /* 打开日志 */
 void open_log()
 {
         /* 打开运行日志文件 */
-        run_log_fd = open(run_log_path, O_WRONLY);
+        run_log_fd = open(RUN_LOG_PATH, O_WRONLY);
         if (run_log_fd < 0)
         {
                 printf("open error!\n");
+                printf("%s", strerror(errno));
                 exit(1);
         }
 
         /* 打开错误日志文件 */
-        err_log_fd = open(err_log_path, O_WRONLY);
+        err_log_fd = open(ERR_LOG_PATH, O_WRONLY);
         if (err_log_fd < 0)
         {
                 printf("open error!\n");

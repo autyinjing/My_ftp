@@ -26,6 +26,6 @@
 
 /* function */
 
-  extern handle_sig(int sig);
+  extern void handle_sig(int sig);
 
 #endif

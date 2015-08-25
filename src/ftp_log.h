@@ -29,15 +29,13 @@
 
 /* macro */
   
-  #define RUNLOG 0
-  #define ERRLOG 1
+//  #define RUNLOG 0
+//  #define ERRLOG 1
 
 /* global var */
 
-  const char *run_log_path = "~/.my_ftp.log/ftp_run.log";/* 运行日志的文件路径 */
-  const char *err_log_path = "~/.my_ftp.log/ftp_err.log";/* 错误文件的文件路径 */
-  int run_log_fd;       /* 运行日志的文件描述符 */
-  int err_log_fd;       /* 错误日志的文件描述符 */
+  extern int run_log_fd;       /* 运行日志的文件描述符 */
+  extern int err_log_fd;       /* 错误日志的文件描述符 */
 
 /* function */
 

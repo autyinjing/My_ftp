@@ -25,6 +25,10 @@
   #include <unistd.h>
   #include <fcntl.h>
 
+/* global var */
+  
+  extern int g_epollfd;  /* 主线程的epoll描述符 */
+
 /* function */
 
   extern void do_epoll(int epollfd, struct epoll_event *events, int maxnum);

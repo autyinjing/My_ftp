@@ -16,8 +16,7 @@
  * =====================================================================================
  */
 
-#include "ftp_sig.h"
-#include "ftp_init.h"
+#include "my_ftp.h"
 
 /* 信号处理函数，仅仅处理SIGTERM信号和SIGINT信号，收到信号后做清理工作并结束进程 */
 void handle_sig(int sig)

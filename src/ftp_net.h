@@ -31,11 +31,11 @@
 
 /* global var */
 
-  int listenfd; /* 监听新连接的socket描述符 */
+  extern int g_listenfd; /* 监听新连接的socket描述符 */
 
 /* function */
 
   extern int bind_socket(const char *ip, int port);
-  extern int handle_accept(int listenfd);
+  extern void handle_accept(int listenfd);
 
 #endif  /* end of FP_NET_H */

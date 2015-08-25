@@ -1,0 +1,45 @@
+#!/bin/bash - 
+#===============================================================================
+#
+#          FILE: configure.sh
+# 
+#         USAGE: ./configure.sh 
+# 
+#   DESCRIPTION: 
+# 
+#       OPTIONS: ---
+#  REQUIREMENTS: ---
+#          BUGS: ---
+#         NOTES: ---
+#        AUTHOR: Aut (yinjing), autyinjing@126.com
+#  ORGANIZATION: 
+#       CREATED: 2015年08月25日 23:00
+#      REVISION:  ---
+#===============================================================================
+
+
+# 相关路径
+log_path=~/.my_ftp.log         #日志目录路径
+run_log=$log_path/ftp_run.log   #运行日志文件
+err_log=$log_path/ftp_err.log   #错误日志文件
+
+# 创建日志目录和文件
+if [ ! -d "$log_path" ]
+then
+        mkdir $log_path
+        echo "mkdir $log_path"
+fi
+
+if [ ! -f "$run_log" ]
+then
+        touch $run_log
+        echo "touch $run_log"
+fi
+
+if [ ! -f "$err_log" ]
+then
+        touch $err_log
+        echo "touch $err_log"
+fi
+
+exit
