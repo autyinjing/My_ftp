@@ -28,8 +28,8 @@ int main(int argc, char *argv[])
                 printf("Usage: my_ftp ip port\n");
                 exit(-1);
         }
-	int sockfd = bind_socket(argv[1], atoi(argv[2]));
-        int ret = listen(sockfd, 5);
+	g_listenfd = bind_socket(argv[1], atoi(argv[2]));
+        int ret = listen(g_listenfd, 5);
         if (ret < 0)
         {
                 fprintf(stderr, "listen error!\n");

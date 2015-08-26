@@ -63,6 +63,10 @@ void handle_accept(int listenfd)
                 fprintf(stderr, "accept error!\n");
                 exit(1);
         }
+        char ip_buf[32];
+        printf("accept a new connection, ip: %s, port: %d\n",
+                        inet_ntop(AF_INET, &cli_addr.sin_addr, ip_buf, 32),
+                        ntohs(cli_addr.sin_port));
 
         pthread_mutex_lock(&g_user_mutex);
         g_users[g_user_count].ctl_addr = cli_addr;

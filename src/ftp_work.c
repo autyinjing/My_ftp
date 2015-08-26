@@ -27,6 +27,13 @@ pthread_mutex_t g_user_mutex;
 void *work(void *arg)
 {
         int no = *(int *)arg;
+        //printf("no = %d\n", no);
+        pthread_mutex_lock(&g_user_mutex);
+        ++g_user_count;
+        pthread_mutex_unlock(&g_user_mutex);
+        
+        printf("Thread [%lu] begin work, user_count = %d\n", pthread_self(), g_user_count);
+
         bool stop_thread = false;
 
         int epoll_fd = epoll_create(5);
@@ -43,13 +50,16 @@ void *work(void *arg)
         {
                 int number = epoll_wait(epoll_fd, th_events, MAX_EVENT_NUM, -1);
                 int i;
+                //printf("in work(), number = %d\n", number);
                 for (i = 0; i < number; ++i)
                 {
                         int fd = th_events[i].data.fd;
                         if ((fd == g_users[no].ctl_fd) && (EPOLLIN & th_events[i].events)) {
+                                //printf("fd == ctl_fd\n");
                                 char recv_buf[64];
                                 memset(recv_buf, '\0', sizeof(recv_buf));
                                 int ret = recv(fd, recv_buf, 63, 0);
+                                //printf("recv success, ret = %d\n", ret);
                                 if (ret < 0) {
                                         if (errno != EAGAIN)
                                         {
@@ -75,6 +85,9 @@ void *work(void *arg)
         --g_user_count;
         pthread_mutex_unlock(&g_user_mutex);
 
+        printf("Thread [%lu] stop work, user_count = %d\n",
+                        pthread_self(), g_user_count);
+
         return NULL;
 }
 
@@ -88,6 +101,7 @@ int do_cmd(const char *buf, int no)
         } else if (strcmp(buf, "stor") == 0) {
                 stor(g_users, no, NULL);
         } else if (strcmp(buf, "quit") == 0) {
+                quit();
                 return 1;
         }
 
