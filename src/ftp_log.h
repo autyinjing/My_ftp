@@ -28,9 +28,13 @@
   #include <stdlib.h>
 
 /* macro */
-  
-//  #define RUNLOG 0
-//  #define ERRLOG 1
+
+#ifndef LOG_MACRO
+  #define RUNLOG 0
+  #define ERRLOG 1
+  #define RUN_LOG_PATH "/home/honey/.my_ftp.log/ftp_run.log"
+  #define ERR_LOG_PATH "/home/honey/.my_ftp.log/ftp_err.log"
+#endif
 
 /* global var */
 

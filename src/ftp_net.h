@@ -38,4 +38,4 @@
   extern int bind_socket(const char *ip, int port);
   extern void handle_accept(int listenfd);
 
-#endif  /* end of FP_NET_H */
+#endif  /* end of FTP_NET_H */

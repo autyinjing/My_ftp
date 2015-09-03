@@ -19,10 +19,10 @@
 #include "my_ftp.h"
 
 /* 宏定义 */
-#define RUNLOG 0
-#define ERRLOG 1
-#define RUN_LOG_PATH "/home/honey/.my_ftp.log/ftp_run.log"
-#define ERR_LOG_PATH "/home/honey/.my_ftp.log/ftp_err.log"
+//#define RUNLOG 0
+//#define ERRLOG 1
+//#define RUN_LOG_PATH "/home/honey/.my_ftp.log/ftp_run.log"
+//#define ERR_LOG_PATH "/home/honey/.my_ftp.log/ftp_err.log"
 
 /* 全局变量定义 */
 int run_log_fd;

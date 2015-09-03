@@ -19,7 +19,7 @@
 #include "my_ftp.h"
 
 /* 宏定义 */
-#define MAX_USER_NUM    64
+//#define MAX_USER_NUM    64
 
 /* 初始化 */
 void ftp_init()

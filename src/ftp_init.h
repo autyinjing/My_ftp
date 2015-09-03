@@ -27,7 +27,9 @@
 
 /* macro */
 
-//  #define MAX_USER_NUM          64      /* 最大用户数 */
+#ifndef MAX_USER_NUM
+  #define MAX_USER_NUM          64      /* 最大用户数 */
+#endif
 //  #define MAX_EVENT_NUM         64      /* epoll最大事件数 */
 
 /* global var */
